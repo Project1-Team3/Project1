@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"crossorigin="anonymous">
+    </head>
+<body>
+
+<h1>Location</h1>
+
+<div class="row">
+<div class="col-sm-1"></div>
+<div class="col-lg-10" id="googleMap" style="width:70%;height:500px;"></div>
+<div class="col-sm-1"></div>
+</div>
+<script>
+function myMap() {
+var center= new google.maps.LatLng(37.863730, -122.267248);
+var mapProp= {
+    center,
+    zoom:10,
+};
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+var marker = new google.maps.Marker({
+  position:center,
+  animation:google.maps.Animation.BOUNCE
+  });
+
+marker.setMap(map);
+}
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQXZKUESFWjgm23xM0AgDuQkWXUSI3Ejg&callback=myMap"></script>
+
+</body>
+</html> 
