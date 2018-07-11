@@ -7,13 +7,15 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"crossorigin="anonymous">
+
 
 <body class="w3-black">
  <!-- Icon Bar (Sidebar - hidden on small screens) -->
  <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
         <!-- Avatar image in top left corner -->
         <img src="assets/images/sport1.jpg" style="width:100%">
-        <a href="home.html" class="w3-bar-item w3-button w3-padding-large w3-black">
+        <a href="index.html" class="w3-bar-item w3-button w3-padding-large w3-black">
           <i class="fa fa-home w3-xxlarge"></i>
           <p>HOME</p>
         </a>
@@ -51,6 +53,73 @@
 
         </p>
     </header>
+    <style>
+        body{
+            background: url('assets/images/hex.jpg');
+        }
+        h1{
+            color: white;
+            text-align: center;
+        }
+        #event-box{
+             border: solid 1px white;
+             padding: 10px;
+             color: white;
+        }
+    </style>
+        
+    
+    <h1>Location</h1>
+    <br>
+    <br>
+    
+    <div class="row">
+    <div class="col-sm-1"></div>
+    <div  id="event-box" class="col-sm-5">
+        <div id="event" class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">Info Here!</div>
+    
+        </div>
+        
+    
+    
+    </div>
+    <div class="col-lg-5" id="googleMap" style="width:70%;height:500px;"></div>
+    <div class="col-sm-1"></div>
+    </div>
+    <script>
+    function myMap() {
+    var center = new google.maps.LatLng(37.863730, -122.267248);
+    var mapProp = {
+        center,
+        zoom:12,
+    };
+    var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    var marker = new google.maps.Marker({
+      position:center,
+      animation:google.maps.Animation.BOUNCE
+      });
+    
+    marker.setMap(map);
+    google.maps.event.addListener(marker,'click',function() {
+      map.setZoom(15);
+      map.setCenter(marker.getPosition());
+      }); 
+    
+      google.maps.event.addListener(marker,'click',function() {
+        var infowindow = new google.maps.InfoWindow({
+          content:"Hello World!"
+        });
+      infowindow.open(map,marker);
+      });
+    }
+    
+    
+    </script>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQXZKUESFWjgm23xM0AgDuQkWXUSI3Ejg&callback=myMap"></script>
+    
 
 
       <!-- Footer -->
