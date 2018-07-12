@@ -1,3 +1,18 @@
+// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+
 *html {
     font-family: "Montserrat", sans-serif;
 }
@@ -81,20 +96,23 @@ html {
 
 #auction-header {
     letter-spacing: 10px;
-    font-size: 48px;
+    font-size: 58px;
     font-family: "Montserrat", sans-serif;
+    height: -300px;
+    margin-left: -100px;
 }
 
 #auctions {
+    position: fixed;
     border: 3px solid silver;
     border-radius: 25px 25px 25px 25px;
     background-image: url('../images/block.jpg');
     float: left;
-    margin-left: 50px;
+    margin-left: -5px;
     margin-right: 100px;
-    margin-top: 200px;
-    width: 520px;
-    height: 350px;
+    margin-top: -375px;
+    width: 300px;
+    height: 450px;
     
 }
 #main-jumbotron {
@@ -110,14 +128,20 @@ html {
 
 #clock {
     font-family: "Montserrat", sans-serif;
+    margin-left: -100px;
 }
 
-button {
-    font-family: "Montserrat", sans-serif;
+#toggle-auction {
+    margin-left: -100px;
+}
+
+#toggle-bid {
+    margin-left: 0px;
 }
 
 #jumbotron {
-    background-image: url('../images/hexlight.jpg');
+    background-image: url('../images/tickit.png');
+    background-repeat: repeat-x;
 
 }
 
@@ -136,11 +160,11 @@ button {
     background-image: url('../images/block.jpg');
     border-radius: 25px 25px 25px 25px;
     border: 3px solid silver;
-    width: 450px;
+    width: 300px;
     height: 600px;
     position: fixed;
-    margin-left: 1990px;
-    margin-top: 50px;
+    margin-left: 1600px;
+    margin-top: -250px;
     text-align: center;
 } 
 
@@ -153,8 +177,8 @@ button {
     height: 85px;
     width: 450px;
     position: fixed;
-    margin-top: 650px;
-    margin-left: 1190px;
+    margin-top: 500px;
+    margin-left: 1400px;
     text-align: center;
     line-height: 5px;
     font-size: 16px;
@@ -175,6 +199,12 @@ td {
 }
 #card-container {
     margin-top: 10px;
+}
+
+#itemForm {
+    width: 250px;
+    height: 300px;
+
 }
 
 #form {
