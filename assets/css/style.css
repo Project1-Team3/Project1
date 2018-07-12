@@ -140,7 +140,7 @@ html {
 }
 
 #jumbotron {
-    background-image: url('../images/tickit.png');
+    background-image: url('../images/hexlight.jpg');
     background-repeat: repeat-x;
 
 }
@@ -152,6 +152,8 @@ html {
     font-family: "Montserrat", sans-serif;
     letter-spacing: 7px;
     line-height: 1.5px;
+    background-image: url('../images/hexlight.jpg');
+    
 }
 
 
