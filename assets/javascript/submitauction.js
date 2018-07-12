@@ -1,15 +1,11 @@
 
 
   // Sets firebase database
-    var database = firebase.database();
-    var auctionsRef = database.ref("/auctions");
+  var database = firebase.database();
+   
 
   
-  // Global Variables
-	var itemName= "";
-	var ownerName= ""
-	var auctionPrice="";
-  var expirationDate = "";
+  
     
 	
   // OnClick for form
@@ -33,7 +29,9 @@
 	  itemName: itemName,
 	  ownerName: ownerName,
 	  auctionPrice: auctionPrice,
-	  expirationDate: expirationDate
+		expirationDate: expirationDate,
+		highBidder: highBidder,
+		highPrice: highPrice
 	};
 
   // Pushes trainInfo to database
