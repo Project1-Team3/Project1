@@ -4,29 +4,68 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"crossorigin="anonymous">
     </head>
 <body>
+<style>
+    body{
+        background: url('assets/images/hex.jpg');
+    }
+    h1{
+        color: white;
+        text-align: center;
+    }
+    #event-box{
+         border: solid 1px white;
+         padding: 10px;
+         color: white;
+    }
+</style>
+    
 
 <h1>Location</h1>
+<br>
+<br>
 
 <div class="row">
 <div class="col-sm-1"></div>
-<div class="col-lg-10" id="googleMap" style="width:70%;height:500px;"></div>
+<div  id="event-box" class="col-sm-5">
+    <div id="event" class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">Info Here!</div>
+
+    </div>
+    
+
+
+</div>
+<div class="col-lg-5" id="googleMap" style="width:70%;height:500px;"></div>
 <div class="col-sm-1"></div>
 </div>
 <script>
 function myMap() {
-var center= new google.maps.LatLng(37.863730, -122.267248);
-var mapProp= {
+var center = new google.maps.LatLng(37.863730, -122.267248);
+var mapProp = {
     center,
-    zoom:10,
+    zoom:12,
 };
-var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 var marker = new google.maps.Marker({
   position:center,
   animation:google.maps.Animation.BOUNCE
   });
 
 marker.setMap(map);
+google.maps.event.addListener(marker,'click',function() {
+  map.setZoom(15);
+  map.setCenter(marker.getPosition());
+  }); 
+
+  google.maps.event.addListener(marker,'click',function() {
+    var infowindow = new google.maps.InfoWindow({
+      content:"Hello World!"
+    });
+  infowindow.open(map,marker);
+  });
 }
+
 
 </script>
 
