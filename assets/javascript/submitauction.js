@@ -9,7 +9,7 @@
 	var itemName= "";
 	var ownerName= ""
 	var auctionPrice="";
-    var expirationDate = "";
+  var expirationDate = "";
     
 	
   // OnClick for form
@@ -71,10 +71,9 @@
 		$("<td>").text(ownerName),
 		$("<td>").text(auctionPrice),
 		$("<td>").text(expirationDate),
-		
 	   
 	  );
-	
+		newRow.attr("data", itemName).addClass("bidData").attr("data-ownerName", ownerName).attr("data-auctionPrice", auctionPrice).attr("data-expirationDate", expirationDate);
 	  // Append the new row to the table
 	  $("#mainSchedule > tbody").append(newRow);
 	  
@@ -86,3 +85,13 @@
   
 	}
     setInterval(displayTime, 1000);
+
+
+$("#mainSchedule").on('click' , "tr", function(event) {
+	$("#bidItem").text($(this).attr('data'))
+	$("#highest-bidder").text($(this).attr('data-ownerName'))
+	$("#highest-price").text($(this).attr('data-auctionPrice'))
+	
+	console.log($(this).attr('data'))
+	// 'data-ownerName', 'data-auctionPrice', 'data-expirationDate'));
+})
