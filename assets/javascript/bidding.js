@@ -8,11 +8,27 @@ var config = {
   messagingSenderId: "325148478422"
 };
 firebase.initializeApp(config);
-
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+  console.log(user)
+  } else {
+    // User is signed out.
+    // ...
+  }
+});
 // Create a variable to reference the database.
 var database = firebase.database();
 
+
 // -----------------------------
+email =(localStorage.getItem('email'));
+password =(localStorage.getItem('pass'));
+firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+});
 
 // connectionsRef references a specific location in our database.
 // All of our connections will be stored in this directory.
