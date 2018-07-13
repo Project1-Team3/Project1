@@ -53,7 +53,7 @@ body, form, p, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif; letter-
     color: red;
     cursor: pointer;
     position: relative;
-    
+
 }
 
 /* Add Zoom Animation */
@@ -63,12 +63,12 @@ body, form, p, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif; letter-
 }
 
 @-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
+    from {-webkit-transform: scale(0)}
     to {-webkit-transform: scale(1)}
 }
 
 @keyframes animatezoom {
-    from {transform: scale(0)} 
+    from {transform: scale(0)}
     to {transform: scale(1)}
 }
 
@@ -98,7 +98,6 @@ html {
     margin-top: -375px;
     width: 300px;
     height: 450px;
-    
 }
 #main-jumbotron {
     font-family: "Montserrat", sans-serif;
@@ -125,7 +124,9 @@ html {
 }
 
 #jumbotron {
+ 
     background-image: url('../images/tickit.png');
+ 
     background-repeat: repeat-x;
 
 }
@@ -137,6 +138,8 @@ html {
     font-family: "Montserrat", sans-serif;
     letter-spacing: 7px;
     line-height: 1.5px;
+    background-image: url('../images/hexlight.jpg');
+    
 }
 
 
@@ -151,7 +154,7 @@ html {
     margin-left: 1600px;
     margin-top: -250px;
     text-align: center;
-} 
+}
 
 #viewcard {
     background-image: url('../images/block.jpg');
@@ -210,7 +213,7 @@ td {
 }
 
 #auction-submit {
-    
+
     margin-left: -30px;
     margin-top: -15px;
     width: 250px;
