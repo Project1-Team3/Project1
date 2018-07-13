@@ -3,11 +3,6 @@
   // Sets firebase database
   var database = firebase.database();
 
-
-
-
-
-
   // OnClick for form
   $("#submit").on("click", function(){
   //prevent default
@@ -74,7 +69,7 @@
 		$("<td>").text(expirationDate)
 
 	  );
-		newRow.attr("data", itemName).addClass("bidData").attr("data-ownerName", ownerName).attr("data-auctionPrice", auctionPrice).attr("data-expirationDate", expirationDate).attr('data-item-key', childSnapshot.key).attr('data-high-price', highPrice);
+		newRow.attr("data", itemName).addClass("bidData").attr("data-ownerName", ownerName).attr("data-auctionPrice", auctionPrice).attr("data-expirationDate", expirationDate).attr('data-item-key', childSnapshot.key).attr('data-high-price', highPrice).attr('data-high-bidder', highBidder);
 	  // Append the new row to the table
 	  $("#mainSchedule > tbody").append(newRow);
 
@@ -90,9 +85,12 @@
 
 $("#mainSchedule").on('click' , "tr", function(event) {
 	$("#bidItem").text($(this).attr('data'))
-	$("#highest-bidder").text($(this).attr('data-ownerName'))
-	$("#highest-price").text($(this).attr('data-auctionPrice'))
-	$("#item-key").attr('value', $(this).data('item-key'));
+	$("#highest-bidder").text($(this).attr('data-high-bidder'))
+	$("#highest-price").text($(this).attr('data-high-price'))
+	$("#item-key").attr('value', $(this).data('item-key'))
+	$("#highest-bidder").text($(this).attr('data-high-bidder'))
+	$("#highest-price").text($(this).attr('data-high-price'))
+	
 
 	console.log($(this).attr('data'))
 	// 'data-ownerName', 'data-auctionPrice', 'data-expirationDate'));

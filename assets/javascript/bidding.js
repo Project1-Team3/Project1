@@ -143,8 +143,9 @@ $("#submit-bid").on("click", function(event) {
     $("#highest-bidder").text(bidderName);
     $("#highest-price").text("$" + bidderPrice);
   } else {
-
+    
     // Alert
     alert("Sorry that bid is too low. Try again.");
   }
 });
+
