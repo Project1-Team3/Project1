@@ -52,7 +52,7 @@
 	  itemName = childSnapshot.val().itemName;
 	  ownerName = childSnapshot.val().ownerName;
 	  auctionPrice = childSnapshot.val().auctionPrice;
-	  expirationDate = childSnapshot.val().expirationDate; 
+	  expirationDate = childSnapshot.val().expirationDate;
 	
 	  // Train Info
 	  console.log(itemName);
@@ -65,8 +65,10 @@
 		// Creates the new row
 	  var newRow = $("<tr>").append(
 		$("<td>").text(itemName),
+		$("<td>").text("$" +auctionPrice),
 		$("<td>").text(ownerName),
-		$("<td>").text(auctionPrice),
+		$("<td>").text(highBidder),
+		$("<td>").text("$" +highPrice),
 		$("<td>").text(expirationDate),
 	   
 	  );

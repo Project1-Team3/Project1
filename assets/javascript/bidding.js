@@ -145,5 +145,3 @@ $("#submit-bid").on("click", function(event) {
     alert("Sorry that bid is too low. Try again.");
   }
 });
-
-
