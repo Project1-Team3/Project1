@@ -50,6 +50,10 @@ var initialBid = 0;
 var initialBidder = "No one :-(";
 var highPrice = initialBid;
 var highBidder = initialBidder;
+var itemName = "";
+var ownerName = "";
+var auctionPrice = "";
+var expirationDate = "";
 
 // --------------------------------------------------------------
 // At the page load and subsequent value changes, get a snapshot of the local data.
@@ -62,10 +66,15 @@ database.ref("/bidderData").on("value", function(snapshot) {
     // Set the local variables for highBidder equal to the stored values in firebase.
     highBidder = snapshot.val().highBidder;
     highPrice = parseInt(snapshot.val().highPrice);
+    itemName = snapshot.val().itemName;
+    ownerName = snapshot.val().ownerName;
+    auctionPrice = snapshot.val(),auctionPrice;
+    expirationDate = snapshot.val().expirationDate;
 
     // change the HTML to reflect the newly updated local values (most recent information from firebase)
     $("#highest-bidder").text(snapshot.val().highBidder);
     $("#highest-price").text("$" + snapshot.val().highPrice);
+    $("#itemName").text(snapshot.val().itemName);
 
     // Print the local data to the console.
     console.log(snapshot.val().highBidder);
@@ -111,7 +120,11 @@ $("#submit-bid").on("click", function(event) {
     // Save the new price in Firebase
     database.ref("/bidderData").set({
       highBidder: bidderName,
-      highPrice: bidderPrice
+      highPrice: bidderPrice,
+      itemName: itemName,
+      ownerName: ownerName,
+      expirationDate: expirationDate,
+      auctionPrice: auctionPrice
     });
 
     // Log the new High Price

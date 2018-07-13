@@ -1,15 +1,11 @@
 
 
   // Sets firebase database
-    var database = firebase.database();
-    var auctionsRef = database.ref("/auctions");
+  var database = firebase.database();
+   
 
   
-  // Global Variables
-	var itemName= "";
-	var ownerName= ""
-	var auctionPrice="";
-  var expirationDate = "";
+  
     
 	
   // OnClick for form
@@ -33,7 +29,8 @@
 	  itemName: itemName,
 	  ownerName: ownerName,
 	  auctionPrice: auctionPrice,
-	  expirationDate: expirationDate
+		expirationDate: expirationDate,
+		
 	};
 
   // Pushes trainInfo to database
@@ -55,7 +52,7 @@
 	  itemName = childSnapshot.val().itemName;
 	  ownerName = childSnapshot.val().ownerName;
 	  auctionPrice = childSnapshot.val().auctionPrice;
-	  expirationDate = childSnapshot.val().expirationDate; 
+	  expirationDate = childSnapshot.val().expirationDate;
 	
 	  // Train Info
 	  console.log(itemName);
@@ -68,8 +65,10 @@
 		// Creates the new row
 	  var newRow = $("<tr>").append(
 		$("<td>").text(itemName),
+		$("<td>").text("$" +auctionPrice),
 		$("<td>").text(ownerName),
-		$("<td>").text(auctionPrice),
+		$("<td>").text(highBidder),
+		$("<td>").text("$" +highPrice),
 		$("<td>").text(expirationDate),
 	   
 	  );
