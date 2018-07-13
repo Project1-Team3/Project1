@@ -138,7 +138,7 @@ $("#submit-bid").on("click", function(event) {
       highPrice: bidderPrice
     });
     $("#"+itemKey).find('.high-bidder').text(bidderName);
-    $("#"+itemKey).find('.high-price').text("$" +bidderPrice);
+    $("#"+itemKey).find('.high-price').text(bidderPrice);
 
     // Log the new High Price
 
@@ -150,9 +150,8 @@ $("#submit-bid").on("click", function(event) {
     $("#highest-bidder").text(bidderName);
     $("#highest-price").text("$" + bidderPrice);
   } else {
-    
+
     // Alert
     alert("Sorry that bid is too low. Try again.");
   }
 });
-
