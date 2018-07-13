@@ -118,7 +118,7 @@ database.ref("/bidderData").on("value", function(snapshot) {
 });
 
 // --------------------------------------------------------------
-// Whenever a user clicks the click button
+// Whenever a user clicks the  button
 $("#submit-bid").on("click", function(event) {
   event.preventDefault();
 
@@ -154,7 +154,7 @@ $("#submit-bid").on("click", function(event) {
       highPrice: bidderPrice
     });
     $("#"+itemKey).find('.high-bidder').text(bidderName);
-    $("#"+itemKey).find('.high-price').text(bidderPrice);
+    $("#"+itemKey).find('.high-price').text('$' +bidderPrice);
     $("#highest-bidder").text(bidderName);
     $("#highest-price").text(bidderPrice);
     $("#"+itemKey).attr('data-high-price', bidderPrice);
@@ -176,3 +176,9 @@ $("#submit-bid").on("click", function(event) {
     alert("Sorry that bid is too low. Try again.");
   }
 });
+
+if (bidderName = null) {
+  $(bidderPrice).text("$" +auctionPrice);
+} else {
+  $(bidderPrice).text("$" +bidderPrice);
+}
