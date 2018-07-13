@@ -11,6 +11,10 @@
 <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
 
 
+
+ <!-- Bootstrap CDN-->
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+
 <body class="w3-black">
 
  <!-- Icon Bar (Sidebar - hidden on small screens) -->
@@ -35,7 +39,28 @@
         </a>
       </nav>
 
+       
+  <div class="jumbotron" id="jumbotron">
 
+    <h1 id="jumbotron-title">TickitGo</h1>
+
+    </div>
+
+    <div class="jumbotron bg-train bg-dark text-white mb-0 radius-0" style="padding: 1%; margin-top: 100px;" id="main-jumbotron">
+        <div class="container" id="jumbotron-container">
+
+            <h1 id="auction-header">Register</h1>
+
+          <!-- Clock -->
+            <div id="clock"><span id="currentTime"> </span></div>
+            <br>
+          <!-- Buttons -->
+          <p>
+        <button id="mainbtn" onclick="document.getElementById('id01').style.display='block'">Login</button>
+        <button id="mainbtn" onclick="document.getElementById('id02').style.display='block'">Sign Up</button>
+          </p>
+        </div>
+      </div>
   <!-- Navbar on small screens (Hidden on medium and large screens) -->
   <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
     <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
@@ -46,12 +71,10 @@
     </div>
   </div>
 
+
   <!-- Page Content -->
   <div class="w3-padding-large" id="main">
     <!-- Header/Home -->
-    <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
-      <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="Home">
-        <img src="assets/images/tickit.png" alt="boy" class="w3-image" width="992" height="1108">
 
     </header>
 
@@ -59,7 +82,7 @@
     <header class="w3-container w3-padding-32 w3-center w3-black" id="Login">
       <div class="w3-content w3-justify w3-text-grey " id="Login">
         <!-- Button to open the modal login form -->
-        <button id="mainbtn" onclick="document.getElementById('id01').style.display='block'">Login</button>
+        
 
         <!-- The Modal -->
         <div id="id01" class="modal">
@@ -105,7 +128,7 @@
       <div class="w3-content w3-justify w3-text-grey ">
         <!-- Button to open the modal -->
         
-        <button id="mainbtn" onclick="document.getElementById('id02').style.display='block'">Sign Up</button>
+        
 
         <!-- The Modal (contains the Sign Up form) -->
         <div id="id02" class="modal">

@@ -34,7 +34,7 @@ body, form, p, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif; letter-
     left: 0;
     top: 0;
     width: 80%; /* Full width */
-    height: 80%; /* Full height */
+    height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -115,6 +115,11 @@ html {
     height: 450px;
     
 }
+
+#jumbotron {
+    background-image: url('../images/hexlight.jpg');
+
+}
 #main-jumbotron {
     font-family: "Montserrat", sans-serif;
     background-image: url('../images/block.jpg');
@@ -125,6 +130,7 @@ html {
     margin-left: 200px;
     letter-spacing: 5px;
 }
+
 
 #clock {
     font-family: "Montserrat", sans-serif;
