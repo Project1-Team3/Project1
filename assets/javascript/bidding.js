@@ -75,6 +75,8 @@ database.ref("/bidderData").on("value", function(snapshot) {
     $("#highest-bidder").text(snapshot.val().highBidder);
     $("#highest-price").text("$" + snapshot.val().highPrice);
     $("#itemName").text(snapshot.val().itemName);
+    $("#item-key").attr('value', snapshot.key);
+    console.log('key', snapshot.key);
 
     // Print the local data to the console.
     console.log(snapshot.val().highBidder);
@@ -107,30 +109,38 @@ $("#submit-bid").on("click", function(event) {
   // Get the input values
   var bidderName = $("#bidder-name").val().trim();
   var bidderPrice = parseInt($("#bidder-price").val().trim());
+  var highPrice = $("#item-high-price").val()
+  var itemKey = $("#item-key").val();
 
   // Log the Bidder and Price (Even if not the highest)
-  console.log(bidderName);
-  console.log(bidderPrice);
+  if (bidderPrice <= highPrice) {
+    // Alert
+    swal({
+      type: 'error',
+      title: 'Sorry, ' + bidderName + '',
+      text: 'Your bid must be higher than ' + highPrice
+    });
+    return false;
+  }
 
   if (bidderPrice > highPrice) {
 
     // Alert
-    alert("You are now the highest bidder.");
-
-    // Save the new price in Firebase
-    database.ref("/bidderData").set({
-      highBidder: bidderName,
-      highPrice: bidderPrice,
-      itemName: itemName,
-      ownerName: ownerName,
-      expirationDate: expirationDate,
-      auctionPrice: auctionPrice
+    swal({
+      type: 'success',
+      title: 'Congratulations' + bidderName + '!',
+      text: 'At $' + bidderPrice + ' You are now the high bidder!'
     });
 
+    // Save the new price in Firebase
+    database.ref("/auctionItems/"+itemKey).update({
+      highBidder: bidderName,
+      highPrice: bidderPrice
+    });
+    $("#"+itemKey).find('.high-bidder').text(bidderName);
+    $("#"+itemKey).find('.high-price').text(bidderPrice);
+
     // Log the new High Price
-    console.log("New High Price!");
-    console.log(bidderName);
-    console.log(bidderPrice);
 
     // Store the new high price and bidder name as a local variable (could have also used the Firebase variable)
     highBidder = bidderName;
