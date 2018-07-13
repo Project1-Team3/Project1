@@ -75,6 +75,8 @@ database.ref("/bidderData").on("value", function(snapshot) {
     $("#highest-bidder").text(snapshot.val().highBidder);
     $("#highest-price").text("$" + snapshot.val().highPrice);
     $("#itemName").text(snapshot.val().itemName);
+    $("#item-key").attr('value', snapshot.key);
+    console.log('key', snapshot.key);
 
     // Print the local data to the console.
     console.log(snapshot.val().highBidder);
@@ -107,6 +109,8 @@ $("#submit-bid").on("click", function(event) {
   // Get the input values
   var bidderName = $("#bidder-name").val().trim();
   var bidderPrice = parseInt($("#bidder-price").val().trim());
+  var highPrice = $("#highest-price").val()
+  var itemKey = $("#item-key").val();
 
   // Log the Bidder and Price (Even if not the highest)
   console.log(bidderName);
@@ -118,14 +122,13 @@ $("#submit-bid").on("click", function(event) {
     alert("You are now the highest bidder.");
 
     // Save the new price in Firebase
-    database.ref("/bidderData").set({
+    console.log('itemKey', itemKey);
+    database.ref(itemKey).update({
       highBidder: bidderName,
-      highPrice: bidderPrice,
-      itemName: itemName,
-      ownerName: ownerName,
-      expirationDate: expirationDate,
-      auctionPrice: auctionPrice
+      highPrice: bidderPrice
     });
+    $("#"+itemKey).find('.high-bidder').text(bidderName);
+    $("#"+itemKey).find('.high-price').text(bidderPrice);
 
     // Log the new High Price
     console.log("New High Price!");
