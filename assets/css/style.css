@@ -98,6 +98,7 @@ html {
     margin-top: -375px;
     width: 300px;
     height: 450px;
+    
 }
 #main-jumbotron {
     font-family: "Montserrat", sans-serif;
@@ -124,9 +125,7 @@ html {
 }
 
 #jumbotron {
- 
     background-image: url('../images/tickit.png');
- 
     background-repeat: repeat-x;
 
 }
