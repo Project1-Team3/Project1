@@ -139,6 +139,9 @@ $("#submit-bid").on("click", function(event) {
     });
     $("#"+itemKey).find('.high-bidder').text(bidderName);
     $("#"+itemKey).find('.high-price').text(bidderPrice);
+    $("#highest-bidder").text(bidderName);
+    $("#highest-price").text(bidderPrice);
+
 
     // Log the new High Price
 
