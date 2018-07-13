@@ -7,30 +7,36 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+  crossorigin="anonymous">
+ 
+<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+ 
 
 <body class="w3-black">
- <!-- Icon Bar (Sidebar - hidden on small screens) -->
- <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
-        <!-- Avatar image in top left corner -->
-        <img src="assets/images/sport1.jpg" style="width:100%">
-        <a href="index.html" class="w3-bar-item w3-button w3-padding-large w3-black">
-          <i class="fa fa-home w3-xxlarge"></i>
-          <p>HOME</p>
-        </a>
-        <a href="login.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-          <i class="fa fa-user w3-xxlarge"></i>
-          <p>LOG-IN</p>
-        </a>
-        <a href="bids.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-          <i class="fa fa-eye w3-xxlarge"></i>
-          <p>BIDS</p>
-        </a>
-        <a href="tickets.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-          <i class="fa fa-envelope w3-xxlarge"></i>
-          <p>TICKETS</p>
-        </a>
-      </nav>
-
+  <!-- Icon Bar (Sidebar - hidden on small screens) -->
+  <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+    <!-- Avatar image in top left corner -->
+    <img src="assets/images/sport1.jpg" style="width:100%">
+    <a href="home.html" class="w3-bar-item w3-button w3-padding-large w3-black">
+      <i class="fa fa-home w3-xxlarge"></i>
+      <p>HOME</p>
+    </a>
+    <a href="login.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+      <i class="fa fa-user w3-xxlarge"></i>
+      <p>LOGIN</p>
+    </a>
+    <a href="bids.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+      <i class="fa fa-eye w3-xxlarge"></i>
+      <p>BIDS</p>
+    </a>
+    <a href="tickets.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+      <i class="fa fa-envelope w3-xxlarge"></i>
+      <p>TICKETS</p>
+    </a>
+  </nav>
+ 
   <!-- Navbar on small screens (Hidden on medium and large screens) -->
   <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
     <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
@@ -44,34 +50,155 @@
   <!-- Page Content -->
   <div class="w3-padding-large" id="main">
     <!-- Header/Home -->
-    <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
-      <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="Home">
-        <img src="assets/images/tickit.png" alt="boy" class="w3-image" width="992" height="1108">
-       
 
-        </p>
-    </header>
+    <style>
+      body {
+        background: url('assets/images/hex.jpg');
+      }
 
+      #event-box {
+        border: solid 1px white;
+        padding: 10px;
+        color: white;
+ 
+        background: url('assets/images/block.jpg');
+        font-family: "Montserrat", sans-serif;
+      }
 
-      <!-- Footer -->
-      <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-        <i class="fa fa-facebook-official w3-hover-opacity"></i>
-        <i class="fa fa-instagram w3-hover-opacity"></i>
-        <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-        <i class="fa fa-twitter w3-hover-opacity"></i>
-        <i class="fa fa-linkedin w3-hover-opacity"></i>
-        <p class="w3-medium">Powered by
-          <a target="_blank" class="w3-hover-text">Team3</a>
-        </p>
-        <!-- End footer -->
-      </footer>
-      <script src="assets/javascript/java.js"></script>
-      <script src="assets/javascript/bidding.js"></script>
-      <script src="assets/javascript/submitauction.js"></script>
+      #event {
+        text-align: center;
+      }
+    </style>
+ 
 
+    <div class="jumbotron" id="jumbotron">
 
-      <!-- END PAGE CONTENT -->
+      <h1 id="jumbotron-title">TickitGo</h1>
+
+    </div>
+    <br>
+    <br>
+
+    <div class="row">
+      <div class="col-sm-1"></div>
+ 
+      <div id="event-box" class="col-lg-5"> -Tickets near you-
+        <div id="event" class="row">
+          <div class="col-sm-1"></div>
+          <div id="tickets" class="col-sm-8">Event</div>
+          <div id="date" class="col-sm-3">Date</div>
+ 
+        </div>
+
       </div>
+      <div class="col-lg-5" id="googleMap" style="width:70%;height:500px;"></div>
+      <div class="col-sm-1"></div>
+    </div>
+    <script>
+ 
+      var config = {
+        apiKey: "AIzaSyBp0s18TUbVk_y-HM2hSl-fHEfFzDm3-q8",
+        authDomain: "project1-team3-add85.firebaseapp.com",
+        databaseURL: "https://project1-team3-add85.firebaseio.com",
+        projectId: "project1-team3-add85",
+        storageBucket: "project1-team3-add85.appspot.com",
+        messagingSenderId: "325148478422"
+      };
+      firebase.initializeApp(config);
+
+      var database = firebase.database();
+      var auctionsRef = database.ref("/auctionItems");
+      var itemKey = $("#item-key").val();
+
+      database.ref("/auctionItems").on("child_added", function (childSnapshot) {
+        console.log(childSnapshot.val().itemName);
+
+        itemName = childSnapshot.val().itemName;
+        ownerName = childSnapshot.val().ownerName;
+        auctionPrice = childSnapshot.val().auctionPrice;
+        expirationDate = childSnapshot.val().expirationDate;
+
+        var position = [ {lat:37.8080, lng:-122.2702}, {lat:37.7781, lng:-122.4174}, {lat:37.4268, lng:122.0807}, {lat:37.7827, lng:122.4104}, {lat:37.7651, lng:122.3965}]
+
+
+        var itemInfo = {
+          itemName: itemName,
+          ownerName: ownerName,
+          auctionPrice: auctionPrice,
+          expirationDate: expirationDate,
+          
+        };
+
+        var newRow = $("<div>").append(
+          $("<div>").text(itemName),
+
+        );
+        newRow.attr("data", itemName).addClass("bidData");
+        $("#tickets").append(newRow);
+
+        var newRow = $("<div>").append(
+          $("<div>").text(expirationDate),
+
+        );
+        newRow.addClass("bidData").attr("data-expirationDate", expirationDate);
+        $("#date").append(newRow);
+
+      }, function (errorObject) {
+        console.log("Errors handled: " + errorObject.code);
+
+      });
+
+      
+
+      // .attr("data-ownerName", ownerName).attr("data-auctionPrice", auctionPrice)
+ 
+
+      function myMap() {
+        var center = new google.maps.LatLng(37.863730, -122.267248);
+        var mapProp = {
+          center,
+          zoom: 12,
+        };
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+        var marker = new google.maps.Marker({
+          position: center,
+          animation: google.maps.Animation.BOUNCE
+        });
+
+        marker.setMap(map);
+        google.maps.event.addListener(marker, 'click', function () {
+          map.setZoom(15);
+          map.setCenter(marker.getPosition());
+        });
+
+        google.maps.event.addListener(marker, 'click', function () {
+          var infowindow = new google.maps.InfoWindow({
+            content: "Hello World!"
+          });
+          infowindow.open(map, marker);
+        });
+      }
+ 
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQXZKUESFWjgm23xM0AgDuQkWXUSI3Ejg&callback=myMap"></script>
+
+
+    <!-- Footer -->
+    <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+      <i class="fa fa-facebook-official w3-hover-opacity"></i>
+      <i class="fa fa-instagram w3-hover-opacity"></i>
+      <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+      <i class="fa fa-twitter w3-hover-opacity"></i>
+      <i class="fa fa-linkedin w3-hover-opacity"></i>
+      <p class="w3-medium">Powered by
+        <a target="_blank" class="w3-hover-text">Team3</a>
+      </p>
+      <!-- End footer -->
+    </footer>
+ 
+    <!-- END PAGE CONTENT -->
+  </div>
 
 </body>
 
