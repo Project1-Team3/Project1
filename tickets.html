@@ -9,6 +9,8 @@
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
   crossorigin="anonymous">
+<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <body class="w3-black">
   <!-- Icon Bar (Sidebar - hidden on small screens) -->
@@ -32,7 +34,6 @@
       <p>TICKETS</p>
     </a>
   </nav>
-
   <!-- Navbar on small screens (Hidden on medium and large screens) -->
   <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
     <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
@@ -56,9 +57,14 @@
         border: solid 1px white;
         padding: 10px;
         color: white;
+        background: url('assets/images/block.jpg');
+        font-family: "Montserrat", sans-serif;
+      }
+
+      #event {
+        text-align: center;
       }
     </style>
-
 
     <div class="jumbotron" id="jumbotron">
 
@@ -70,11 +76,11 @@
 
     <div class="row">
       <div class="col-sm-1"></div>
-      <div id="event-box" class="col-sm-5">
+      <div id="event-box" class="col-lg-5"> -Tickets near you-
         <div id="event" class="row">
           <div class="col-sm-1"></div>
-          <div class="col-sm-5">Info Here!</div>
-
+          <div id="tickets" class="col-sm-8">Event</div>
+          <div id="date" class="col-sm-3">Date</div>
         </div>
 
       </div>
@@ -83,14 +89,60 @@
     </div>
     <script>
 
+      var config = {
+        apiKey: "AIzaSyBp0s18TUbVk_y-HM2hSl-fHEfFzDm3-q8",
+        authDomain: "project1-team3-add85.firebaseapp.com",
+        databaseURL: "https://project1-team3-add85.firebaseio.com",
+        projectId: "project1-team3-add85",
+        storageBucket: "project1-team3-add85.appspot.com",
+        messagingSenderId: "325148478422"
+      };
+      firebase.initializeApp(config);
+
       var database = firebase.database();
       var auctionsRef = database.ref("/auctions");
 
-      var itemName = "";
-      var ownerName = ""
-      var auctionPrice = "";
-      var expirationDate = "";
+      database.ref().on("child_added", function (childSnapshot) {
+        console.log(childSnapshot.val().itemName);
 
+        itemName = childSnapshot.val().itemName;
+        ownerName = childSnapshot.val().ownerName;
+        auctionPrice = childSnapshot.val().auctionPrice;
+        expirationDate = childSnapshot.val().expirationDate;
+
+        var position = [ {lat:37.8080, lng:-122.2702}, {lat:37.7781, lng:-122.4174}, {lat:37.4268, lng:122.0807}, {lat:37.7827, lng:122.4104}, {lat:37.7651, lng:122.3965}]
+
+
+        var itemInfo = {
+          itemName: itemName,
+          ownerName: ownerName,
+          auctionPrice: auctionPrice,
+          expirationDate: expirationDate,
+          
+        };
+
+        var newRow = $("<div>").append(
+          $("<div>").text(itemName),
+
+        );
+        newRow.attr("data", itemName).addClass("bidData");
+        $("#tickets").append(newRow);
+
+        var newRow = $("<div>").append(
+          $("<div>").text(expirationDate),
+
+        );
+        newRow.addClass("bidData").attr("data-expirationDate", expirationDate);
+        $("#date").append(newRow);
+
+      }, function (errorObject) {
+        console.log("Errors handled: " + errorObject.code);
+
+      });
+
+      
+
+      // .attr("data-ownerName", ownerName).attr("data-auctionPrice", auctionPrice)
 
       function myMap() {
         var center = new google.maps.LatLng(37.863730, -122.267248);
@@ -118,7 +170,7 @@
         });
       }
 
-
+      
     </script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQXZKUESFWjgm23xM0AgDuQkWXUSI3Ejg&callback=myMap"></script>
@@ -136,7 +188,7 @@
       </p>
       <!-- End footer -->
     </footer>
-    <script src="assets/javascript/java.js"></script>
+
     <!-- END PAGE CONTENT -->
   </div>
 
