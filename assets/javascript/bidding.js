@@ -128,7 +128,7 @@ $("#submit-bid").on("click", function(event) {
       highPrice: bidderPrice
     });
     $("#"+itemKey).find('.high-bidder').text(bidderName);
-    $("#"+itemKey).find('.high-price').text(bidderPrice);
+    $("#"+itemKey).find('.high-price').text("$" +bidderPrice);
 
     // Log the new High Price
     console.log("New High Price!");
