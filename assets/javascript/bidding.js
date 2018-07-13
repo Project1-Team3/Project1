@@ -144,7 +144,7 @@ $("#submit-bid").on("click", function(event) {
     // Alert
     swal({
       type: 'success',
-      title: 'Congratulations' + bidderName + '!',
+      title: 'Congratulations ' + bidderName + '!',
       text: 'At $' + bidderPrice + ' You are now the high bidder!'
     });
 
