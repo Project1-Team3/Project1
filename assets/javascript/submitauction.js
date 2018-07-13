@@ -52,7 +52,9 @@
 	  itemName = childSnapshot.val().itemName;
 	  ownerName = childSnapshot.val().ownerName;
 	  auctionPrice = childSnapshot.val().auctionPrice;
-	  expirationDate = childSnapshot.val().expirationDate;
+		expirationDate = childSnapshot.val().expirationDate;
+		highBidder = childSnapshot.val().highBidder;
+		highPrice = childSnapshot.val().highPrice;
 
 	  // Train Info
 	  console.log(itemName);
