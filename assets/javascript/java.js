@@ -9,93 +9,97 @@ var config = {
     messagingSenderId: "325148478422"
 };
 firebase.initializeApp(config);
-
-// Create a variable to reference the database.
+console.log("hi");
 var database = firebase.database();
+console.log("你好");
 
-// -----------------------------
-
-// connectionsRef references a specific location in our database.
-// All of our connections will be stored in this directory.
-var usersRef = database.ref("/users");
-
-// When the client's connection state changes...
-usersRef.on("value", function (snap) {
-
-    // If they are connected..
-    if (snap.val()) {
-
-        // Add user to the connections list.
-        var con = usersRef.push(true);
-        // Remove user from the connection list when they disconnect.
-        con.onDisconnect().remove();
-    }
-});
-
-// When first loaded or when the connections list changes...
-usersRef.on("value", function (snap) {
-
-    // Display the viewer count in the html.
-    // The number of online users is the number of children in the users.
-    $("#user").text(snap.numChildren());
-});
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
 var username = "";
 var email = ""
 var phoneNum = "";
 var password = "";
 
 // OnClick for form
-$("#submit").on("click", function () {
+$("#form").submit( function () {
+    console.log("人");
+    
     //prevent default
     event.preventDefault();
+    console.log($("#username").val());
+    
+    if ($("#passward").val() == $("#passward2").val()){
     // Get input from user & store in variables
-    username = $("#username").val().trim();
-    email = $("#email").val().trim();
-    phoneNum = $("#phoneNum").val().trim();
-    password = $("#passward").val().trim();
-
-
-    console.log("username: " + username);
-    console.log("phoneNum : " + phoneNum);
-    console.log("email: " + email);
-    console.log("password: " + password);
-
-    // Creates variables to connect to firebase
-    var itemInfo = {
-        username: usernamee,
-        email: email,
-        phoneNum: phoneNume,
-        password: password
-    };
+    username = $("#username").val();
+    email = $("#email").val();
+    phoneNum = $("#phoneNum").val();
+    password = $("#sn-password").val();
+    console.log(password);
+    localStorage.setItem('email',email);
+    localStorage.setItem('pass', password);
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+        console.log(errorCode)
+        console.log(errorMessage);
+        
+      });
+      
+      
 
     // Pushes trainInfo to database
-    database.ref().push(itemInfo);
+ 
+    $(location).attr('href', 'bids.html')
+    }else{
+        alert ("Password aren't equal.")
+    }
 
+  //  clearForm()
 
-    clearForm()
+}); 
 
-});
+$("#login").submit( function () {
+    //prevent default
+    event.preventDefault();
+   
+    
+   
+    // Get input from user & store in variables
+    email = $("#ln-email").val();
+    password = $("#ln-password").val();
+
+    // Creates variables to connect to firebase
+   
+    // Pushes trainInfo to database
+    localStorage.setItem('email',email);
+    localStorage.setItem('pass', password);
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+      });
+      
+
+    $(location).attr('href', 'bids.html')
+  
+  //  clearForm()
+
+}); 
 
 // Get the modal login
-var modal = document.getElementById('id01');
+var modal1 = document.getElementById('id01');
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+    if (event.target == modal1) {
+        modal1.style.display = "none";
     }
 }
 // Get the modal
-var modal = document.getElementById('id02');
+var modal2 = document.getElementById('id02');
 window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+    if (event.target == modal2) {
+        modal2.style.display = "none";
     }
 }

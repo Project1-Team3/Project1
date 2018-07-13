@@ -195,8 +195,9 @@ td {
 #form {
     margin-left: 40px;
     font-family: "Montserrat", sans-serif;
-
-    width: 75%;
+    margin-right: 40px;
+    width: 94%;
+    
 }
 
 #submit-header {

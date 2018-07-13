@@ -7,6 +7,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+
 
 <body class="w3-black">
 
@@ -54,7 +57,7 @@
 
     <!-- Login Section -->
     <header class="w3-container w3-padding-32 w3-center w3-black" id="Login">
-      <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="Login">
+      <div class="w3-content w3-justify w3-text-grey " id="Login">
         <!-- Button to open the modal login form -->
         <button id="mainbtn" onclick="document.getElementById('id01').style.display='block'">Login</button>
 
@@ -63,36 +66,34 @@
           <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 
           <!-- Modal Content -->
-          <form class="modal-content animate" action="/action_page.php">
+          <form class="modal-content animate" id="login" action="/action_page.php">
             <div class="imgcontainer">
               <img src="assets/images/avatar.png" alt="Avatar" class="avatar">
             </div>
 
             <div class="container">
               <div class="row">
+
                 <label for="uname">
-                  <b>Username</b>
+                  <b>Email</b>
                 </label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
+                <input type="text" placeholder="Enter Email" name="uname" id="ln-email"required>
               </div>
               <div class="row">
                 <label for="psw">
                   <b>Password</b>
                 </label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
+                <input type="password" placeholder="Enter Password" name="psw" id="ln-password" required>
               </div>
+              
               <div class="row">
-                <button type="submit">Login</button>
+                <button type="submit" >Login</button>
                 <label>
                   <input type="checkbox" checked="checked" name="remember"> <a style="color:black">Remember me</a>
                 </label>
                 <div class="row">
 
                   <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                  <span class="psw">Forgot
-                    <a href="#">password?</a>
-
-                  </span>
 
                 </div>
               </div>
@@ -101,7 +102,7 @@
         </form>
       </div>
 
-      <div>
+      <div class="w3-content w3-justify w3-text-grey ">
         <!-- Button to open the modal -->
         
         <button id="mainbtn" onclick="document.getElementById('id02').style.display='block'">Sign Up</button>
@@ -109,36 +110,36 @@
         <!-- The Modal (contains the Sign Up form) -->
         <div id="id02" class="modal">
           <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal"></span>
-          <form class="modal-content" action="/action_page.php">
-            <div class="container">
+          <form class="modal-content" id="form" action="/action_page.php">
+            <div class="container text-center" >
               <h1><a style="color:black">Sign Up</a></h1>
             
               <p><a style="color:black">Please fill in this form to create an account.</a></p>
               <hr>
               <label for="Username">
-                  <b>Email</b>
+                  <b>Username</b>
                 </label>
-                <input type="text" placeholder="Enter Username" name="Username" required>
+                <input type="text" placeholder="Enter Username" name="Username"  id="username"required>
 
-              <label for="Username">
+              <label for="Email">
                 <b>Email</b>
               </label>
-              <input type="text" placeholder="Enter Email" name="email" required>
+              <input type="text" placeholder="Enter Email" name="email" id="email" required>
 
               <label for="psw">
                   <b>Phone Number</b>
                 </label>
-                <input type="text" placeholder="Enter Phone Number" name="num" required>
+                <input type="text" placeholder="Enter Phone Number" name="num" id="phoneNum" required>
   
                 <label for="num">
                 <b>Password</b>
               </label>
-              <input type="password" placeholder="Enter Password" name="psw" required>
+              <input type="password" placeholder="Enter Password" name="psw" id="sn-password" required>
 
               <label for="psw-repeat">
                 <b>Repeat Password</b>
               </label>
-              <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+              <input type="password" placeholder="Repeat Password" name="psw-repeat" id="password2" required>
 
               <label>
                 <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> <a style="color:black">Remember me</a>
@@ -149,7 +150,7 @@
 
               <div class="clearfix">
                   <button type="submit" class="signup"  onclick="document.getElementById('id01').style.display='none'">Sign Up</button>
-                  <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                  
               </div>
             </div>
           </form>
@@ -168,10 +169,10 @@
         </p>
         <!-- End footer -->
       </footer>
-      <script src="assets/javascript/java.js"></script>
+      
       <!-- END PAGE CONTENT -->
       </div>
-
+<script src="assets/javascript/java.js"></script>
 </body>
 
 </html>
