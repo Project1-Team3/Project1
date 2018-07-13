@@ -30,8 +30,7 @@
 	  ownerName: ownerName,
 	  auctionPrice: auctionPrice,
 		expirationDate: expirationDate,
-		highBidder: highBidder,
-		highPrice: highPrice
+		
 	};
 
   // Pushes trainInfo to database
