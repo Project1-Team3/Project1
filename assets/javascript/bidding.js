@@ -109,12 +109,19 @@ $("#submit-bid").on("click", function(event) {
   // Get the input values
   var bidderName = $("#bidder-name").val().trim();
   var bidderPrice = parseInt($("#bidder-price").val().trim());
-  var highPrice = $("#highest-price").val()
+  var highPrice = $("#item-high-price").val()
   var itemKey = $("#item-key").val();
 
   // Log the Bidder and Price (Even if not the highest)
-  console.log(bidderName);
-  console.log(bidderPrice);
+  if (bidderPrice <= highPrice) {
+    // Alert
+    swal({
+      type: 'error',
+      title: 'Sorry, ' + bidderName + '',
+      text: 'Your bid must be higher than ' + highPrice
+    });
+    return false;
+  }
 
   if (bidderPrice > highPrice) {
 
@@ -126,7 +133,6 @@ $("#submit-bid").on("click", function(event) {
     });
 
     // Save the new price in Firebase
-    console.log('itemKey', itemKey);
     database.ref("/auctionItems/"+itemKey).update({
       highBidder: bidderName,
       highPrice: bidderPrice
@@ -135,9 +141,6 @@ $("#submit-bid").on("click", function(event) {
     $("#"+itemKey).find('.high-price').text(bidderPrice);
 
     // Log the new High Price
-    console.log("New High Price!");
-    console.log(bidderName);
-    console.log(bidderPrice);
 
     // Store the new high price and bidder name as a local variable (could have also used the Firebase variable)
     highBidder = bidderName;
