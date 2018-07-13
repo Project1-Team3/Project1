@@ -119,7 +119,11 @@ $("#submit-bid").on("click", function(event) {
   if (bidderPrice > highPrice) {
 
     // Alert
-    alert("You are now the highest bidder.");
+    swal({
+      type: 'success',
+      title: 'Congratulations' + bidderName + '!',
+      text: 'At $' + bidderPrice + ' You are now the high bidder!'
+    });
 
     // Save the new price in Firebase
     console.log('itemKey', itemKey);
