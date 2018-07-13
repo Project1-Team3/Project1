@@ -46,7 +46,7 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 }
-var usersname = "";
+var username = "";
 var email = ""
 var phoneNum = "";
 var password = "";
@@ -56,20 +56,20 @@ $("#submit").on("click", function () {
     //prevent default
     event.preventDefault();
     // Get input from user & store in variables
-    usersname = $("#usersname").val().trim();
+    username = $("#username").val().trim();
     email = $("#email").val().trim();
     phoneNum = $("#phoneNum").val().trim();
     password = $("#passward").val().trim();
 
 
-    console.log("usersname: " + usersname);
+    console.log("username: " + username);
     console.log("phoneNum : " + phoneNum);
     console.log("email: " + email);
     console.log("password: " + password);
 
     // Creates variables to connect to firebase
     var itemInfo = {
-        usersname: usersnamee,
+        username: usernamee,
         email: email,
         phoneNum: phoneNume,
         password: password
@@ -94,4 +94,8 @@ window.onclick = function (event) {
 }
 // Get the modal
 var modal = document.getElementById('id02');
-
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}

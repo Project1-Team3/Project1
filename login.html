@@ -112,9 +112,15 @@
           <form class="modal-content" action="/action_page.php">
             <div class="container">
               <h1><a style="color:black">Sign Up</a></h1>
+            
               <p><a style="color:black">Please fill in this form to create an account.</a></p>
               <hr>
-              <label for="email">
+              <label for="Username">
+                  <b>Email</b>
+                </label>
+                <input type="text" placeholder="Enter Username" name="Username" required>
+
+              <label for="Username">
                 <b>Email</b>
               </label>
               <input type="text" placeholder="Enter Email" name="email" required>
@@ -142,7 +148,7 @@
                 <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
               <div class="clearfix">
-                  <button type="submit" class="signup">Sign Up</button>
+                  <button type="submit" class="signup"  onclick="document.getElementById('id01').style.display='none'">Sign Up</button>
                   <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
               </div>
             </div>
