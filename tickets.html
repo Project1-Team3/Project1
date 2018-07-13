@@ -12,6 +12,10 @@
  
 <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+ <!-- Bootstrap CDN-->
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+
  
 
 <body class="w3-black">
@@ -25,7 +29,7 @@
     </a>
     <a href="login.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
       <i class="fa fa-user w3-xxlarge"></i>
-      <p>LOGIN</p>
+      <p>LOG-IN</p>
     </a>
     <a href="bids.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
       <i class="fa fa-eye w3-xxlarge"></i>
@@ -37,6 +41,24 @@
     </a>
   </nav>
  
+  <div class="jumbotron" id="jumbotron">
+
+    <h1 id="jumbotron-title">TickitGo</h1>
+
+    </div>
+
+    <div class="jumbotron bg-train bg-dark text-white mb-0 radius-0" id="main-jumbotron">
+        <div class="container" id="jumbotron-container">
+
+            <h1 id="auction-header">Ticket Location</h1>
+
+          <!-- Clock -->
+            <div id="clock"><span id="currentTime"> </span></div>
+            <br>
+          
+        </div>
+      </div>
+
   <!-- Navbar on small screens (Hidden on medium and large screens) -->
   <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
     <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
@@ -69,11 +91,6 @@
         text-align: center;
       }
     </style>
- 
-
-    <div class="jumbotron" id="jumbotron">
-
-      <h1 id="jumbotron-title">TickitGo</h1>
 
     </div>
     <br>
