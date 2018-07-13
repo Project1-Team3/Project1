@@ -107,9 +107,10 @@
       firebase.initializeApp(config);
 
       var database = firebase.database();
-      var auctionsRef = database.ref("/auctions");
+      var auctionsRef = database.ref("/auctionItems");
+      var itemKey = $("#item-key").val();
 
-      database.ref().on("child_added", function (childSnapshot) {
+      database.ref("/auctionItems").on("child_added", function (childSnapshot) {
         console.log(childSnapshot.val().itemName);
 
         itemName = childSnapshot.val().itemName;
