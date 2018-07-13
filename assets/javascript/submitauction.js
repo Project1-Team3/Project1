@@ -69,7 +69,11 @@
 		$("<td>").text(expirationDate)
 
 	  );
+<<<<<<< HEAD
 		newRow.attr("data", itemName).addClass("bidData").attr("data-ownerName", ownerName).attr("data-auctionPrice", auctionPrice).attr("data-expirationDate", expirationDate).attr('data-item-key', childSnapshot.key).attr('data-high-price', highPrice).attr('data-high-bidder', highBidder);
+=======
+		newRow.attr("data", itemName).addClass("bidData").attr("data-ownerName", ownerName).attr("data-auctionPrice", auctionPrice).attr("data-expirationDate", expirationDate).attr('data-item-key', childSnapshot.key).attr('data-high-price', highPrice).attr('data-high-bidder-name', highBidder);
+>>>>>>> 15fc4a6d453bc4941e0eda587c26c55ce09c682a
 	  // Append the new row to the table
 	  $("#mainSchedule > tbody").append(newRow);
 
@@ -84,6 +88,7 @@
 
 
 $("#mainSchedule").on('click' , "tr", function(event) {
+<<<<<<< HEAD
 	$("#bidItem").text($(this).attr('data'))
 	$("#highest-bidder").text($(this).attr('data-high-bidder'))
 	$("#highest-price").text($(this).attr('data-high-price'))
@@ -91,6 +96,13 @@ $("#mainSchedule").on('click' , "tr", function(event) {
 	$("#highest-bidder").text($(this).attr('data-high-bidder'))
 	$("#highest-price").text($(this).attr('data-high-price'))
 	
+=======
+	$("#bidItem").text($(this).attr('data'));
+	$("#highest-bidder").text($(this).attr('data-high-bidder-name'));
+	$("#highest-price").text($(this).attr('data-high-price'));
+	$("#item-high-price").attr('value', $(this).attr('data-high-price'));
+	$("#item-key").attr('value', $(this).data('item-key'));
+>>>>>>> 15fc4a6d453bc4941e0eda587c26c55ce09c682a
 
 	console.log($(this).attr('data'))
 	// 'data-ownerName', 'data-auctionPrice', 'data-expirationDate'));
