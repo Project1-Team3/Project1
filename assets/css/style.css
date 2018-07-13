@@ -1,5 +1,22 @@
+// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
 
-body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+
+*html {
+    font-family: "Montserrat", sans-serif;
+}
+body, form, p, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif; letter-spacing: 1px;}
 .w3-row-padding img {margin-bottom: 12px}
 /* Set the width of the sidebar to 120px */
 .w3-sidebar {width: 120px;background: #222;}
@@ -7,3 +24,209 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 #main {margin-left: 120px}
 /* Remove margins from "page content" on small screens */
 @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 80%; /* Full width */
+    height: 80%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5px auto; /* 15% from the top and centered */
+    border: 1px solid #888;
+    width: 25%; /* Could be more or less, depending on screen size */
+    text-align: center;
+    line-height: 25px;
+    padding: 5px;
+}
+
+/* The Close Button */
+.close {
+    /* Position it in the top right corner outside of the modal */
+    position: absolute;
+    top:0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+/* Close button on hover */
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+    position: relative;
+    
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+
+/* Bidding div UI css */
+
+html {
+    background-image: url('../images/hex.jpg');
+}
+
+#auction-header {
+    letter-spacing: 10px;
+    font-size: 58px;
+    font-family: "Montserrat", sans-serif;
+    height: -300px;
+    margin-left: -100px;
+}
+
+#auctions {
+    position: fixed;
+    border: 3px solid silver;
+    border-radius: 25px 25px 25px 25px;
+    background-image: url('../images/block.jpg');
+    float: left;
+    margin-left: -5px;
+    margin-right: 100px;
+    margin-top: -375px;
+    width: 300px;
+    height: 450px;
+    
+}
+#main-jumbotron {
+    font-family: "Montserrat", sans-serif;
+    background-image: url('../images/block.jpg');
+
+}
+
+#jumbotron-container {
+    margin-left: 200px;
+    letter-spacing: 5px;
+}
+
+#clock {
+    font-family: "Montserrat", sans-serif;
+    margin-left: -100px;
+}
+
+#toggle-auction {
+    margin-left: -100px;
+}
+
+#toggle-bid {
+    margin-left: 0px;
+}
+
+#jumbotron {
+    background-image: url('../images/tickit.png');
+    background-repeat: repeat-x;
+
+}
+
+#jumbotron-title {
+    color: #131313;
+    font-size: 58px;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 7px;
+    line-height: 1.5px;
+}
+
+
+#card {
+    float: right;
+    background-image: url('../images/block.jpg');
+    border-radius: 25px 25px 25px 25px;
+    border: 3px solid silver;
+    width: 300px;
+    height: 600px;
+    position: fixed;
+    margin-left: 1600px;
+    margin-top: -250px;
+    text-align: center;
+} 
+
+#viewcard {
+    background-image: url('../images/block.jpg');
+    border-radius: 25px 25px 25px 25px;
+    float: right;
+    border: 3px solid silver;
+    padding: 5px;
+    height: 85px;
+    width: 450px;
+    position: fixed;
+    margin-top: 500px;
+    margin-left: 1400px;
+    text-align: center;
+    line-height: 5px;
+    font-size: 16px;
+}
+table {
+    border: 2px solid silver;
+}
+th {
+    letter-spacing: 2px;
+    text-align: center;
+    padding: 10px;
+}
+td {
+    font-size: 22px;
+    letter-spacing: 2px;
+    text-align: center;
+    padding: 10px;
+}
+#card-container {
+    margin-top: 10px;
+}
+
+#itemForm {
+    width: 250px;
+    height: 300px;
+
+}
+
+#form {
+    margin-left: 40px;
+    font-family: "Montserrat", sans-serif;
+
+    width: 75%;
+}
+
+#submit-header {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: 35px;
+    margin-top: -30px;
+}
+
+#auction-submit {
+    
+    margin-left: -30px;
+    margin-top: -15px;
+    width: 250px;
+}
+
