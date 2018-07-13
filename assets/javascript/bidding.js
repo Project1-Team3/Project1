@@ -123,7 +123,7 @@ $("#submit-bid").on("click", function(event) {
 
     // Save the new price in Firebase
     console.log('itemKey', itemKey);
-    database.ref(itemKey).update({
+    database.ref("/auctionItems/"+itemKey).update({
       highBidder: bidderName,
       highPrice: bidderPrice
     });

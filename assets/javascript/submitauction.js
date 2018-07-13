@@ -34,7 +34,7 @@
 	};
 
   // Pushes trainInfo to database
-  database.ref().push(itemInfo);
+  database.ref("/auctionItems").push(itemInfo);
 
 
   clearForm()
@@ -45,7 +45,7 @@
 	  document.getElementById("itemForm").reset();
   };
 
-  database.ref().on("child_added", function(childSnapshot) {
+  database.ref("/auctionItems").on("child_added", function(childSnapshot) {
 	  console.log(childSnapshot.val());
 
 	  // Store everything into a variable.
