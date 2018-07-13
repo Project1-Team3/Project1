@@ -1,5 +1,4 @@
 
-
   // Sets firebase database
   var database = firebase.database();
 
