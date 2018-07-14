@@ -1,18 +1,40 @@
 <!DOCTYPE html>
-<html>
-<title>TickitGo</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="assets/css/style.css">
- <!-- Bootstrap CDN-->
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
- 
- <!-- Firebase Reference -->
-  
+
+<!-- 
+***********************************************
+*Author: Team 3                               *
+*Project1: Tickit N GO!                       *
+*UCB Extension - Full-Stack Bootcamp          *
+*July 2018                                    *
+***********************************************
+-->
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Tickit N' Go</title>
+  <meta name="description" content="Team 3 Project 1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <!-- Bootstrap CDN-->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+</head>
+
+<!-- Firebase Reference -->
+
 <body class="w3-black">
 
   <!-- Icon Bar (Sidebar - hidden on small screens) -->
@@ -41,37 +63,38 @@
   <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
     <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
       <a href="index.html" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
- 
+
       <a href="login.html" class="w3-bar-item w3-button" style="width:25% !important">LOGIN</a>
- 
+
       <a href="bids.html" class="w3-bar-item w3-button" style="width:25% !important">BIDS</a>
       <a href="tickets.html" class="w3-bar-item w3-button" style="width:25% !important">TICKETS</a>
     </div>
   </div>
   <div class="jumbotron" id="jumbotron">
 
-    <h1 id="jumbotron-title">TickitGO</h1>
+    <h1 id="jumbotron-title">TickitGo</h1>
 
-    </div>
+  </div>
 
-    <div class="jumbotron bg-train bg-dark text-white mb-0 radius-0" id="main-jumbotron">
-        <div class="container" id="jumbotron-container">
+  <div class="jumbotron bg-train bg-dark text-white mb-0 radius-0" id="main-jumbotron">
+    <div class="container" id="jumbotron-container">
 
-            <h1 id="auction-header">Welcome!</h1>
+      <h1 id="auction-header">Welcome!</h1>
 
-          <!-- Clock -->
-            <div id="clock"><span id="currentTime"> </span></div>
-            <br>
-          
-        </div>
+      <!-- Clock -->
+      <div id="clock">
+        <span id="currentTime"> </span>
       </div>
+      <br>
+    </div>
+  </div>
 
   <!-- Page Content -->
   <div class="w3-padding-large" id="main">
     <!-- Header/Home -->
     <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
       <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="Home">
-      
+
         <h2 class="w3-text-light-grey">TickitGo</h2>
         <p>Last-minute tickets to sport, concert and theater events? Tickit n'Go specializing in last-minute ticket deals. Come
           to us and let us handle it!
@@ -79,25 +102,85 @@
         </p>
     </header>
 
-    
+    <!-- Footer -->
+    <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+      <i class="fa fa-facebook-official w3-hover-opacity"></i>
+      <i class="fa fa-instagram w3-hover-opacity"></i>
+      <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+      <i class="fa fa-twitter w3-hover-opacity"></i>
+      <i class="fa fa-linkedin w3-hover-opacity"></i>
+      <p class="w3-medium">Powered by
+        <a target="_blank" class="w3-hover-text">Team3</a>
+      </p>
+      <!-- End footer -->
+    </footer>
 
-
-      <!-- Footer -->
-      <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-        <i class="fa fa-facebook-official w3-hover-opacity"></i>
-        <i class="fa fa-instagram w3-hover-opacity"></i>
-        <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-        <i class="fa fa-twitter w3-hover-opacity"></i>
-        <i class="fa fa-linkedin w3-hover-opacity"></i>
-        <p class="w3-medium">Powered by
-          <a target="_blank" class="w3-hover-text">Team3</a>
-        </p>
-        <!-- End footer -->
-      </footer>
- 
-      <!-- END PAGE CONTENT -->
-      </div>
-
+    <!-- END PAGE CONTENT -->
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+      crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-database.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBp0s18TUbVk_y-HM2hSl-fHEfFzDm3-q8",
+        authDomain: "project1-team3-add85.firebaseapp.com",
+        databaseURL: "https://project1-team3-add85.firebaseio.com",
+        projectId: "project1-team3-add85",
+        storageBucket: "project1-team3-add85.appspot.com",
+        messagingSenderId: "325148478422"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script>
+      function signOutUser() {
+        firebase.auth().signOut().then(function () {
+          // Sign-out successful.
+          $(location).attr('href', 'index.html')
+        }).catch(function (error) {
+          alert("Oops, we couldn't sign you out :-(");
+        });
+      }
+      function signInUser() {
+        $(location).attr('href', 'login.html')
+      }
+      tickitApp = function () {
+        firebase.auth().onAuthStateChanged(function (user) {
+          if (user) {
+            // User is signed in.
+            var displayName = user.displayName;
+            var phoneNumber = user.phoneNumber;
+            if (displayName) {
+              $("#auction-header").text("Welcome " + displayName + "!");
+            }
+            else {
+              $("#auction-header").text("Welcome " + phoneNumber + "!");
+            }
+            var signOutBtn = "<button type='button' class='btn btn-warning' id='sign-out'>Sign out</button>";
+            $("#jumbotron-container").append(signOutBtn);
+            $("#sign-out").on("click", signOutUser);
+          } else {
+            // User is signed out.
+            $("#auction-header").text("Welcome Guest!");
+            var signInBtn = "<button type='button' class='btn btn-success' id='sign-in'>Register or Sign in!</button>";
+            $("#jumbotron-container").append(signInBtn);
+            $("#sign-in").on("click", signInUser);
+          }
+        }, function (error) {
+          console.log(error);
+        });
+      };
+      $(document).ready(function () {
+        tickitApp();
+      });
+    </script>
 </body>
 
 </html>

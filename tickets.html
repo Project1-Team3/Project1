@@ -9,14 +9,12 @@
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
   crossorigin="anonymous">
- 
+
 <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 
- <!-- Bootstrap CDN-->
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-
- 
+<!-- Bootstrap CDN-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 
 <body class="w3-black">
   <!-- Icon Bar (Sidebar - hidden on small screens) -->
@@ -40,24 +38,20 @@
       <p>TICKETS</p>
     </a>
   </nav>
- 
+
   <div class="jumbotron" id="jumbotron">
-
     <h1 id="jumbotron-title">TickitGO</h1>
-
-    </div>
-
-    <div class="jumbotron bg-train bg-dark text-white mb-0 radius-0" id="main-jumbotron">
-        <div class="container" id="jumbotron-container">
-
-            <h1 id="auction-header">Ticket Location</h1>
-
-          <!-- Clock -->
-            <div id="clock"><span id="currentTime"> </span></div>
-            <br>
-          
-        </div>
+  </div>
+  <div class="jumbotron bg-train bg-dark text-white mb-0 radius-0" id="main-jumbotron">
+    <div class="container" id="jumbotron-container">
+      <h1 id="auction-header">Ticket Location</h1>
+      <!-- Clock -->
+      <div id="clock">
+        <span id="currentTime"> </span>
       </div>
+      <br>
+    </div>
+  </div>
 
   <!-- Navbar on small screens (Hidden on medium and large screens) -->
   <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
@@ -74,148 +68,141 @@
     <!-- Header/Home -->
 
     <style>
+      #main-box {
+        padding-left: 3%;
+      }
       body {
         background: url('assets/images/hex.jpg');
       }
-
       #event-box {
         border: solid 1px white;
         padding: 10px;
         color: white;
- 
         background: url('assets/images/block.jpg');
         font-family: "Montserrat", sans-serif;
       }
-
       #event {
         text-align: center;
       }
     </style>
 
-    </div>
-    <br>
-    <br>
+  </div>
+  <br>
 
-    <div class="row">
-      <div class="col-sm-1"></div>
- 
-      <div id="event-box" class="col-lg-5"> -Tickets near you-
-        <div id="event" class="row">
-          <div class="col-sm-1"></div>
-          <div id="tickets" class="col-sm-8">Event</div>
-          <div id="date" class="col-sm-3">Date</div>
- 
-        </div>
+
+  <div id="main-box" class="row">
+    <div class="col-sm-1"></div>
+
+    <div id="event-box" class="col-lg-5"> -Tickets near you-
+      <div id="event" class="row">
+        <div class="col-sm-1"></div>
+        <div id="tickets" class="col-sm-8">Event</div>
+        <div id="date" class="col-sm-3">Date</div>
 
       </div>
-      <div class="col-lg-5" id="googleMap" style="width:70%;height:500px;"></div>
-      <div class="col-sm-1"></div>
+
     </div>
-    <script>
- 
-      var config = {
-        apiKey: "AIzaSyBp0s18TUbVk_y-HM2hSl-fHEfFzDm3-q8",
-        authDomain: "project1-team3-add85.firebaseapp.com",
-        databaseURL: "https://project1-team3-add85.firebaseio.com",
-        projectId: "project1-team3-add85",
-        storageBucket: "project1-team3-add85.appspot.com",
-        messagingSenderId: "325148478422"
+    <div class="col-lg-5" id="googleMap" style="width:70%;height:500px;"></div>
+    <div class="col-sm-1"></div>
+  </div>
+  <script>
+    var config = {
+      apiKey: "AIzaSyBp0s18TUbVk_y-HM2hSl-fHEfFzDm3-q8",
+      authDomain: "project1-team3-add85.firebaseapp.com",
+      databaseURL: "https://project1-team3-add85.firebaseio.com",
+      projectId: "project1-team3-add85",
+      storageBucket: "project1-team3-add85.appspot.com",
+      messagingSenderId: "325148478422"
+    };
+    firebase.initializeApp(config);
+    var database = firebase.database();
+    var auctionsRef = database.ref("/auctionItems");
+    database.ref("/auctionItems").on("child_added", function (childSnapshot) {
+      console.log(childSnapshot.val().itemName);
+      itemName = childSnapshot.val().itemName;
+      ownerName = childSnapshot.val().ownerName;
+      auctionPrice = childSnapshot.val().auctionPrice;
+      expirationDate = childSnapshot.val().expirationDate;
+      var itemInfo = {
+        itemName: itemName,
+        ownerName: ownerName,
+        auctionPrice: auctionPrice,
+        expirationDate: expirationDate,
       };
-      firebase.initializeApp(config);
-
-      var database = firebase.database();
-      var auctionsRef = database.ref("/auctionItems");
-      var itemKey = $("#item-key").val();
-
-      database.ref("/auctionItems").on("child_added", function (childSnapshot) {
-        console.log(childSnapshot.val().itemName);
-
-        itemName = childSnapshot.val().itemName;
-        ownerName = childSnapshot.val().ownerName;
-        auctionPrice = childSnapshot.val().auctionPrice;
-        expirationDate = childSnapshot.val().expirationDate;
-
-        var position = [ {lat:37.8080, lng:-122.2702}, {lat:37.7781, lng:-122.4174}, {lat:37.4268, lng:122.0807}, {lat:37.7827, lng:122.4104}, {lat:37.7651, lng:122.3965}]
-
-
-        var itemInfo = {
-          itemName: itemName,
-          ownerName: ownerName,
-          auctionPrice: auctionPrice,
-          expirationDate: expirationDate,
-          
-        };
-
-        var newRow = $("<div>").append(
-          $("<div>").text(itemName),
-
-        );
-        newRow.attr("data", itemName).addClass("bidData");
-        $("#tickets").append(newRow);
-
-        var newRow = $("<div>").append(
-          $("<div>").text(expirationDate),
-
-        );
-        newRow.addClass("bidData").attr("data-expirationDate", expirationDate);
-        $("#date").append(newRow);
-
-      }, function (errorObject) {
-        console.log("Errors handled: " + errorObject.code);
-
+      var newRow = $("<div>").append(
+        $("<div>").text(itemName),
+      );
+      newRow.attr("data", itemName).addClass("bidData");
+      $("#tickets").append(newRow);
+      var newRow = $("<div>").append(
+        $("<div>").text(expirationDate),
+      );
+      newRow.addClass("bidData").attr("data-expirationDate", expirationDate);
+      $("#date").append(newRow);
+    }, function (errorObject) {
+      console.log("Errors handled: " + errorObject.code);
+    });
+    // .attr("data-ownerName", ownerName).attr("data-auctionPrice", auctionPrice)
+    var locations = [{ lat: 37.8080, lng: -122.2702 }, { lat: 37.7781, lng: -122.4174 }, { lat: 37.4268, lng: -122.0807 }, { lat: 37.7827, lng: -122.4104 }, { lat: 37.7651, lng: -122.3965 }]
+    function myMap() {
+      var center = new google.maps.LatLng(37.863730, -122.267248);
+      var mapProp = {
+        center,
+        zoom: 11,
+      };
+      var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+      var marker = new google.maps.Marker({
+        position: center,
+        animation: google.maps.Animation.BOUNCE,
       });
-
+      marker.setMap(map);
+      google.maps.event.addListener(marker, 'click', function () {
+        map.setZoom(15);
+        map.setCenter(marker.getPosition());
+      });
+      google.maps.event.addListener(marker, 'click', function () {
+        var infowindow = new google.maps.InfoWindow({
+          content: "Hello World!"
+        });
+        infowindow.open(map, marker);
+      });
+      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var ref = firebase.database().ref("/auctionItems");
+      ref.once("value").then(function (snapshot) {
+        var a = snapshot.numChildren();
+        console.log(a);
+      });
       
-
-      // .attr("data-ownerName", ownerName).attr("data-auctionPrice", auctionPrice)
- 
-
-      function myMap() {
-        var center = new google.maps.LatLng(37.863730, -122.267248);
-        var mapProp = {
-          center,
-          zoom: 12,
-        };
-        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-        var marker = new google.maps.Marker({
-          position: center,
-          animation: google.maps.Animation.BOUNCE
+      var markers = locations.map(function (location, i) {
+        return new google.maps.Marker({
+          position: location,
+          label: labels[i % labels.lenght]
         });
+      });
+      var markerCluster = new MarkerClusterer(map, markers,
+        { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+    }
+  </script>
 
-        marker.setMap(map);
-        google.maps.event.addListener(marker, 'click', function () {
-          map.setZoom(15);
-          map.setCenter(marker.getPosition());
-        });
-
-        google.maps.event.addListener(marker, 'click', function () {
-          var infowindow = new google.maps.InfoWindow({
-            content: "Hello World!"
-          });
-          infowindow.open(map, marker);
-        });
-        
-      }
- 
-    </script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQXZKUESFWjgm23xM0AgDuQkWXUSI3Ejg&callback=myMap"></script>
+  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQXZKUESFWjgm23xM0AgDuQkWXUSI3Ejg&callback=myMap"></script>
 
 
-    <!-- Footer -->
-    <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-      <i class="fa fa-facebook-official w3-hover-opacity"></i>
-      <i class="fa fa-instagram w3-hover-opacity"></i>
-      <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-      <i class="fa fa-twitter w3-hover-opacity"></i>
-      <i class="fa fa-linkedin w3-hover-opacity"></i>
-      <p class="w3-medium">Powered by
-        <a target="_blank" class="w3-hover-text">Team3</a>
-      </p>
-      <!-- End footer -->
-    </footer>
- 
-    <!-- END PAGE CONTENT -->
+
+  <!-- Footer -->
+  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+    <p class="w3-medium">Powered by
+      <a target="_blank" class="w3-hover-text">Team3</a>
+    </p>
+    <!-- End footer -->
+  </footer>
+
+  <!-- END PAGE CONTENT -->
   </div>
 
 </body>
