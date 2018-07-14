@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Twilio test</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <script>
+
+        $(document).ready(function () {
+
+
+            // var queryURL = "https://api.giphy.com/v1/gifs/search?" + $.param({ "api_key": key, "q": $(this).text(), "limit": "10" });
+
+
+            var email = "b4ruch@live.com";
+            var cellphone = "9258585768";
+            var country_code = "1";
+            // var queryURL = "https://api.authy.com/protected/json/users/new" + $.param({ "user[email]": email, "user[cellphone]": cellphone, "user[country_code]": country_code });
+            var queryURL = "https://api.authy.com/protected/json/users/new";
+            var data = { "user[email]": email, "user[cellphone]": cellphone, "user[country_code]": country_code };
+            var method = "POST";
+            var twilio_appKey = "nsKmlDYSyUgrwQXlDkTDPlqt9jv5RS79";
+            var cors = "http://cors-anywhere.herokuapp.com/";
+            console.log(queryURL);
+
+
+            // $.ajax({
+
+            //     url: queryURL,
+            //     method: method,
+            //     contentType: 'application/json',
+            //     headers: { "X-Authy-API-Key": twilio_appKey },
+            //     processData: false,
+            //     data: data,
+            //     crossDomain: true,
+            //     // dataType: 'jsonp',
+            //     dataType: 'jsonp',
+            // }).then(function (response) {
+            //     var registrationResponse = response.data;
+            //     console.log(registrationResponse);
+            // });
+
+
+
+            var params = $.param({ "api_key": "jnMlPS0xDpY2hgWsMNcKUOZSoiD6BNye", "via": "sms", "country_code": "1" });
+            var obj = { "api_key": "jnMlPS0xDpY2hgWsMNcKUOZSoiD6BNye", "via": "sms", "country_code": "1" };
+
+            $.ajax({
+
+                url: "https://api.authy.com/protected/json/phones/verification/start",
+                method: "POST",
+                username: "AC9266cb85c320a7a89b48fb01cfbd8a8b", //ACCOUNT SID
+                password: "54e22df46d6c01be42b84113a1849a1b",  //AUTH TOKEN 
+                // contentType: 'application/json',
+                // headers: { "X-Requested-With": "XMLHttpRequest"},
+                // headers: { "Origin": "XMLHttpRequest"},
+                // processData: false,
+                data: params,
+                crossDomain: true,
+                // dataType: 'JSON',
+                dataType: 'JSON',
+            }).then(function (response) {
+                var registrationResponse = response.data;
+                console.log(registrationResponse);
+            });
+
+            $.ajax({
+                type: "POST",
+                username: "ACCOUNT_SID",
+                password: "AUTH_TOKEN",
+                url: "https://api.twilio.com/2010-04-01/Accounts/[ACCOUNT_SID]/Messages.json",
+                data: {
+                    "To": "+911234567890",
+                    "From": "+11234567890",
+                    "Body": "From jQuery AJAX"
+                },
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+
+
+            // Request - Verify
+            // curl 'https://api.authy.com/protected/json/phones/verification/start' \
+            // -d api_key=jnMlPS0xDpY2hgWsMNcKUOZSoiD6BNye  \
+            // -d via=sms \
+            // -d phone_number=9258585768 \
+            // -d country_code=1
+
+
+            // Request Authy
+            //  curl "https://api.authy.com/protected/json/users/new" \
+            // -H "X-Authy-API-Key: nsKmlDYSyUgrwQXlDkTDPlqt9jv5RS79" \
+            // -d user[email]=b4ruch@live.com \
+            // -d user[cellphone]=9258585768 \
+            // -d user[country_code]=1
+
+
+
+        });
+
+    </script>
+    <script src="assets/javascript/twilio.js" async defer></script>
+</body>
+
+</html>

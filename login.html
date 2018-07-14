@@ -1,66 +1,81 @@
 <!DOCTYPE html>
-<html>
-<title>Log In</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+<!-- 
+***********************************************
+*Author: Team 3                               *
+*Project1: Tickit N GO!                       *
+*UCB Extension - Full-Stack Bootcamp          *
+*July 2018                                    *
+***********************************************
+-->
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
 
-
-
- <!-- Bootstrap CDN-->
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Tickit N' Go</title>
+  <meta name="description" content="Team 3 Project 1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
 
 <body class="w3-black">
 
- <!-- Icon Bar (Sidebar - hidden on small screens) -->
- <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
-        <!-- Avatar image in top left corner -->
-        <img src="assets/images/sport1.jpg" style="width:100%">
-        <a href="index.html" class="w3-bar-item w3-button w3-padding-large w3-black">
-          <i class="fa fa-home w3-xxlarge"></i>
-          <p>HOME</p>
-        </a>
-        <a href="login.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-          <i class="fa fa-user w3-xxlarge"></i>
-          <p>LOG-IN</p>
-        </a>
-        <a href="bids.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-          <i class="fa fa-eye w3-xxlarge"></i>
-          <p>BIDS</p>
-        </a>
-        <a href="tickets.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-          <i class="fa fa-envelope w3-xxlarge"></i>
-          <p>TICKETS</p>
-        </a>
-      </nav>
+  <!-- Icon Bar (Sidebar - hidden on small screens) -->
+  <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+    <!-- Avatar image in top left corner -->
+    <img src="assets/images/sport1.jpg" style="width:100%">
+    <a href="index.html" class="w3-bar-item w3-button w3-padding-large w3-black">
+      <i class="fa fa-home w3-xxlarge"></i>
+      <p>HOME</p>
+    </a>
+    <a href="login.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+      <i class="fa fa-user w3-xxlarge"></i>
+      <p>LOG-IN</p>
+    </a>
+    <a href="bids.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+      <i class="fa fa-eye w3-xxlarge"></i>
+      <p>BIDS</p>
+    </a>
+    <a href="tickets.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+      <i class="fa fa-envelope w3-xxlarge"></i>
+      <p>TICKETS</p>
+    </a>
+  </nav>
 
-       
+
   <div class="jumbotron" id="jumbotron">
-
     <h1 id="jumbotron-title">TickitGo</h1>
+  </div>
 
-    </div>
-
-    <div class="jumbotron bg-train bg-dark text-white mb-0 radius-0" id="main-jumbotron">
-        <div class="container" id="jumbotron-container">
-
-            <h1 id="auction-header">Register</h1>
-
-          <!-- Clock -->
-            <div id="clock"><span id="currentTime"> </span></div>
-            <br>
-          <!-- Buttons -->
-          <p>
-        <button id="mainbtn" onclick="document.getElementById('id01').style.display='block'">Login</button>
-        <button id="mainbtn" onclick="document.getElementById('id02').style.display='block'">Sign Up</button>
-          </p>
-        </div>
+  <div class="jumbotron bg-train bg-dark text-white mb-0 radius-0" id="main-jumbotron">
+    <div class="container" id="jumbotron-container">
+      <h1 id="auction-header">Register</h1>
+      <!-- Clock -->
+      <div id="clock">
+        <span id="currentTime"> </span>
       </div>
+      <br>
+      <!-- Buttons -->
+      <p>
+        <button id="mainbtn" onclick="document.getElementById('id01').style.display='block'">Login</button>
+        <button id="mainbtn2" onclick="document.getElementById('id02').style.display='block'">Sign Up</button>
+        <button id="signPhone" onclick="document.getElementById('firebaseui-auth-container').style.display='block'">Sign with phone!!</button>
+        <div id="firebaseui-auth-container" style="display: none"></div>
+        <!-- <div id="firebaseui-auth-container"></div> -->
+      </p>
+    </div>
+  </div>
   <!-- Navbar on small screens (Hidden on medium and large screens) -->
   <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
     <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
@@ -71,131 +86,156 @@
     </div>
   </div>
 
-
   <!-- Page Content -->
   <div class="w3-padding-large" id="main">
     <!-- Header/Home -->
-
-    </header>
-
-    <!-- Login Section -->
     <header class="w3-container w3-padding-32 w3-center w3-black" id="Login">
+
+      <!-- Login Section -->
       <div class="w3-content w3-justify w3-text-grey " id="Login">
         <!-- Button to open the modal login form -->
-        
 
         <!-- The Modal -->
         <div id="id01" class="modal">
           <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 
           <!-- Modal Content -->
-          <form class="modal-content animate" id="login" action="/action_page.php">
+          <form class="modal-content animate" id="login" action="index.html">
             <div class="imgcontainer">
               <img src="assets/images/avatar.png" alt="Avatar" class="avatar">
             </div>
-
             <div class="container">
               <div class="row">
-
                 <label for="uname">
                   <b>Email</b>
                 </label>
-                <input type="text" placeholder="Enter Email" name="uname" id="ln-email"required>
+                <input type="text" placeholder="Enter Email" name="uname" id="ln-email" required>
               </div>
+
               <div class="row">
                 <label for="psw">
                   <b>Password</b>
                 </label>
                 <input type="password" placeholder="Enter Password" name="psw" id="ln-password" required>
               </div>
-              
+
               <div class="row">
-                <button type="submit" >Login</button>
+                <button type="submit">Login</button>
                 <label>
-                  <input type="checkbox" checked="checked" name="remember"> <a style="color:black">Remember me</a>
+                  <input type="checkbox" checked="checked" name="remember">
+                  <a style="color:black">Remember me</a>
                 </label>
+
                 <div class="row">
-
                   <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-
                 </div>
-              </div>
-            </div>
-        </div>
-        </form>
-      </div>
-
-      <div class="w3-content w3-justify w3-text-grey ">
-        <!-- Button to open the modal -->
-        
-        
-
-        <!-- The Modal (contains the Sign Up form) -->
-        <div id="id02" class="modal">
-          <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal"></span>
-          <form class="modal-content" id="form" action="/action_page.php">
-            <div class="container text-center" >
-              <h1><a style="color:black">Sign Up</a></h1>
-            
-              <p><a style="color:black">Please fill in this form to create an account.</a></p>
-              <hr>
-              <label for="Username">
-                  <b>Username</b>
-                </label>
-                <input type="text" placeholder="Enter Username" name="Username"  id="username"required>
-
-              <label for="Email">
-                <b>Email</b>
-              </label>
-              <input type="text" placeholder="Enter Email" name="email" id="email" required>
-
-              <label for="psw">
-                  <b>Phone Number</b>
-                </label>
-                <input type="text" placeholder="Enter Phone Number" name="num" id="phoneNum" required>
-  
-                <label for="num">
-                <b>Password</b>
-              </label>
-              <input type="password" placeholder="Enter Password" name="psw" id="sn-password" required>
-
-              <label for="psw-repeat">
-                <b>Repeat Password</b>
-              </label>
-              <input type="password" placeholder="Repeat Password" name="psw-repeat" id="password2" required>
-
-              <label>
-                <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> <a style="color:black">Remember me</a>
-              </label>
-
-              <p><a style="color:black">By creating an account you agree to our</a>
-                <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-
-              <div class="clearfix">
-                  <button type="submit" class="signup"  onclick="document.getElementById('id01').style.display='none'">Sign Up</button>
-                  
               </div>
             </div>
           </form>
         </div>
-      </div>
 
-      <!-- Footer -->
-      <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-        <i class="fa fa-facebook-official w3-hover-opacity"></i>
-        <i class="fa fa-instagram w3-hover-opacity"></i>
-        <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-        <i class="fa fa-twitter w3-hover-opacity"></i>
-        <i class="fa fa-linkedin w3-hover-opacity"></i>
-        <p class="w3-medium">Powered by
-          <a target="_blank" class="w3-hover-text">Team3</a>
-        </p>
-        <!-- End footer -->
-      </footer>
-      
-      <!-- END PAGE CONTENT -->
-      </div>
-<script src="assets/javascript/java.js"></script>
+
+        <div class="w3-content w3-justify w3-text-grey ">
+          <!-- Button to open the modal -->
+
+          <!-- The Modal (contains the Sign Up form) -->
+          <div id="id02" class="modal">
+            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal"></span>
+            <form class="modal-content" id="form" action="index.html">
+              <div class="container text-center">
+                <h1>
+                  <a style="color:black">Sign Up</a>
+                </h1>
+
+                <p>
+                  <a style="color:black">Please fill in this form to create an account.</a>
+                </p>
+                <hr>
+                <label for="Username">
+                  <b>Username</b>
+                </label>
+                <input type="text" placeholder="Enter Username" name="Username" id="username" required>
+
+                <label for="Email">
+                  <b>Email</b>
+                </label>
+                <input type="text" placeholder="Enter Email" name="email" id="email" required>
+
+                <label for="psw">
+                  <b>Phone Number</b>
+                </label>
+                <input type="text" placeholder="Enter Phone Number" name="num" id="phoneNum" required>
+
+                <label for="num">
+                  <b>Password</b>
+                </label>
+                <input type="password" placeholder="Enter Password" name="psw" id="sn-password" required>
+
+                <label for="psw-repeat">
+                  <b>Repeat Password</b>
+                </label>
+                <input type="password" placeholder="Repeat Password" name="psw-repeat" id="password2" required>
+
+                <label>
+                  <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px">
+                  <a style="color:black">Remember me</a>
+                </label>
+
+                <p>
+                  <a style="color:black">By creating an account you agree to our</a>
+                  <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+                <div class="clearfix">
+                  <button type="submit" class="signup" onclick="document.getElementById('id01').style.display='none'">Sign Up</button>
+
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+    </header>
+
+
+    <!-- Footer -->
+    <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+      <i class="fa fa-facebook-official w3-hover-opacity"></i>
+      <i class="fa fa-instagram w3-hover-opacity"></i>
+      <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+      <i class="fa fa-twitter w3-hover-opacity"></i>
+      <i class="fa fa-linkedin w3-hover-opacity"></i>
+      <p class="w3-medium">Powered by
+        <a target="_blank" class="w3-hover-text">Team3</a>
+      </p>
+      <!-- End footer -->
+    </footer>
+
+    <!-- END PAGE CONTENT -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+      crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-database.js"></script>
+    <script>
+      var config = {
+        apiKey: "AIzaSyBp0s18TUbVk_y-HM2hSl-fHEfFzDm3-q8",
+        authDomain: "project1-team3-add85.firebaseapp.com",
+        databaseURL: "https://project1-team3-add85.firebaseio.com",
+        projectId: "project1-team3-add85",
+        storageBucket: "project1-team3-add85.appspot.com",
+        messagingSenderId: "325148478422"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+    <script src="assets/javascript/java.js"></script>
+
 </body>
 
 </html>
